@@ -1,0 +1,261 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{%block title %}
+    Blue Coral | Properties
+{% endblock title %}
+
+{% block body %}
+
+
+
+<!-- main header start -->
+<header class="main-header sticky-header" id="main-header-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-lg navbar-light rounded">
+                    <a class="navbar-brand logo" href="{% url 'home' %}">
+                        <img src="{% static 'img/logos/black-logo.png' %}" alt="logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="navbar-nav justify-content-end ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'properties' %}"  aria-haspopup="true" aria-expanded="false">
+                                    Properties
+                                </a>
+                                
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'about' %}"  aria-haspopup="true" aria-expanded="false">
+                                    About
+                                </a>
+                                
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="{% url 'contact' %}"  aria-haspopup="true" aria-expanded="false">
+                                    Contact
+                                </a>
+                                
+                            </li>
+                            
+                            <li class="nav-item dropdown">
+                                <a href="#full-page-search" class="nav-link">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="open-offcanvas nav-link" href="#">
+                                    <span></span>
+                                    <span class="fa fa-bars"></span>
+                                </a>
+                            </li>
+                            {% if user.is_superuser %}
+                                <li class="nav-item sb2">
+                                    <a  href="{% url 'submit-property' %}" class="submit-btn">
+                                        Submit Property
+                                    </a>
+                                </li>
+                                {% endif %}
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- main header end -->
+
+<!-- Sub banner start -->
+<div class="sub-banner">
+    <div class="container">
+        <div class="breadcrumb-area">
+            <h1>Checkout our awesome properties</h1>
+            <ul class="breadcrumbs">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="active">Properties Grid</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Sub banner end -->
+
+<!-- Properties list fullwidth start -->
+<div class="properties-list-fullwidth content-area-2">
+    <div class="container">
+        <div class="option-bar">
+            <div class="row clearfix">
+                <div class="col-xl-4 col-lg-5 col-md-5 col-sm-5 col-3">
+                    <h4>
+                        <span class="heading-icon">
+                            <i class="fa fa-caret-right icon-design"></i>
+                            <i class="fa fa-th-large"></i>
+                        </span>
+                        <span class="heading">Properties Grid</span>
+                    </h4>
+                </div>
+                <div class="col-xl-8 col-lg-7 col-md-7 col-sm-7 col-9">
+                    <div class="sorting-options clearfix">
+                        <a href="properties-list-fullwidth.html" class="change-view-btn"><i class="fa fa-th-list"></i></a>
+                        <a href="properties-grid-fullwidth.html" class="change-view-btn active-view-btn"><i class="fa fa-th-large"></i></a>
+                    </div>
+                    <div class="search-area">
+                        <select class="selectpicker search-fields" name="location">
+                            <option>High to Low</option>
+                            <option>Low to High</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="subtitle">
+            20 Result Found
+        </div> -->
+        <div class="row">
+            {% for property in properties %}
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="property-box">
+                    <div class="property-thumbnail">
+                        <a href="{% url 'property-detail' property.id %}" class="property-img">
+                            <div class="listing-badges">
+                                <span class="featured">Featured</span>
+                            </div>
+                            <div class="tag-for">For Sale</div>
+                            <div class="plan-price"><sup>$</sup>{{property.price}}</div>
+                            <img src="{{property.image_1.url}}" alt="property-box" class="img-fluid"
+                            style="width: 350px; height: 233px;">
+                        </a>
+                        <div class="property-overlay">
+                            <a href="{% url 'property-detail' property.id %}" class="overlay-link">
+                                <i class="fa fa-link"></i>
+                            </a>
+                            <!-- <a class="overlay-link property-video" title="Test Title">
+                                <i class="fa fa-video-camera"></i>
+                            </a> -->
+                            <div class="property-magnify-gallery">
+                                <a href="{{property.image_2}}" class="overlay-link">
+                                    <i class="fa fa-expand"></i>
+                                </a>
+                                <a href="{{property.image_3}}" class="hidden"></a>
+                                <a href="{{property.image_4}}" class="hidden"></a>
+                                <a href="{{property.image_5}}" class="hidden"></a>
+                                <a href="{{property.image_6}}" class="hidden"></a>
+                                <a href="{{property.image_7}}" class="hidden"></a>
+                                <a href="{{property.image_8}}" class="hidden"></a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <h1 class="title">
+                            <a href="{% url 'property-detail' property.id %}">{{property.name}}</a>
+                        </h1>
+                        <div class="location">
+                            <a href="{% url 'property-detail' property.id %}">
+                                <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>{{property.address}},
+                            </a>
+                        </div>
+                        <ul class="facilities-list clearfix">
+                            <li>
+                                <i class="flaticon-bed"></i> {{property.bedrooms}} Bedrooms
+                            </li>
+                            <li>
+                                <i class="flaticon-bath"></i> {{property.bathroom}} Bathrooms
+                            </li>
+                            <li>
+                                <i class="flaticon-square-layouting-with-black-square-in-east-area"></i> Sq Ft:{{property.sqft}}
+                            </li>
+                            <li>
+                                <i class="flaticon-car-repair"></i> {{property.garage}} Garage
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer">
+                        <a href="#">
+                            <i class="fa fa-user"></i> Jhon Doe
+                        </a>
+                        <span>
+                            <i class="fa fa-calendar-o"></i> 2 day ago
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+            
+            <div class="col-lg-12">
+                <div class="pagination-box text-center">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="properties-grid-leftside.html"><span aria-hidden="true">«</span></a></li>
+                            <li class="page-item"><a class="page-link" href="properties-grid-rightside.html">1</a></li>
+                            <li class="page-item"><a class="page-link" href="properties-grid-leftside.html">2</a></li>
+                            <li class="page-item"><a class="page-link active" href="properties-grid-fullwidth.html">3</a></li>
+                            <li class="page-item"><a class="page-link" href="properties-grid-fullwidth.html"><span aria-hidden="true">»</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Properties list fullwidth end -->
+
+
+
+<!-- Full Page Search -->
+<div id="full-page-search">
+    <button type="button" class="close">×</button>
+    <form action="{% url 'search' %}" class="search" method="GET">
+        <input
+            class="form-control search-box"
+            type="search"
+            placeholder="Type a keyword..."
+            name = "search_term"
+            value = "{{ search_term }}"
+            />
+        <button type="submit" class="btn btn-sm btn-color">Search</button>
+    </form>
+</div>
+
+
+<!-- Off-canvas sidebar -->
+<div class="off-canvas-sidebar">
+    <div class="off-canvas-sidebar-wrapper">
+        <div class="off-canvas-header">
+            <a class="close-offcanvas" href="#"><span class="fa fa-times"></span></a>
+        </div>
+        <div class="off-canvas-content">
+            <aside class="canvas-widget">
+                <div class="logo-sitebar text-center">
+                    <img src="{% static 'img/logos/footer-logo.png' %}">
+                </div>
+            </aside>
+            <aside class="canvas-widget">
+                <ul class="menu">
+                    <li class="menu-item menu-item-has-children"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="menu-item"><a href="{% url 'properties' %}">Properties</a></li>
+
+                    <li class="menu-item"><a href="{% url 'about' %}">About  US</a></li>
+                    <li class="menu-item"><a href="{% url 'contact' %}">Contact US</a></li>
+                </ul>
+            </aside>
+            <aside class="canvas-widget">
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <!-- <li><a href="#"><i class="fa fa-vk"></i></a></li> -->
+                </ul>
+            </aside>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}

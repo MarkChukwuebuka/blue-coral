@@ -1,0 +1,772 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Blue Coral | Home
+{% endblock title %}
+
+{% block body %}
+
+
+
+
+<!-- Google Tag Manager (noscript) -->
+
+
+<!-- main header start -->
+<header class="main-header sticky-header" id="main-header-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-lg navbar-light rounded">
+                    <a class="navbar-brand logo navbar-brand d-flex w-50 mr-auto" href="{% url 'home' %}">
+                        <img src="{% static 'img/logos/black-logo.png' %}" alt="logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="navbar-collapse collapse w-100" id="navbar">
+                        <ul class="navbar-nav ml-auto">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'properties' %}">
+                                    Properties
+                                </a>
+                                
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="{% url 'about' %}" aria-haspopup="true" aria-expanded="false">
+                                    About
+                                </a>
+                                
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="{% url 'contact' %}"  aria-haspopup="true" aria-expanded="false">
+                                    Contact
+                                </a>
+                                
+                            </li>
+                            
+                            <li class="nav-item dropdown">
+                                <a href="#full-page-search" class="nav-link">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="open-offcanvas nav-link" href="#">
+                                    <span></span>
+                                    <span class="fa fa-bars"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- main header end -->
+
+<!-- Banner start -->
+<div class="banner banner_video_bg" id="banner">
+    <div class="pattern-overlay">
+        <div class="sub-banner sub-banner-1">
+            <div class="container">
+                <div class="breadcrumb-area">
+                    <div class="text-center">
+                        <div id="typed-strings">
+                            <p>Buy, Sell or Rent</p>
+                        </div>
+                        <h1 class="typed-text">&nbsp;
+                            <span id="typed"></span>
+                        </h1>
+                        <p class="text-p" data-animation="animated fadeInUp delay-10s">
+                            We pride in absolute comfort and luxury . . .
+                        </p>
+                        <!-- <a data-animation="animated fadeInUp delay-10s" href="#" class="btn btn-white">Read More</a> -->
+                    </div>
+                    <!-- <h1>Contact Us</h1>
+                    <ul class="breadcrumbs">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li class="active">Contact Us</li>
+                    </ul> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
+                    <div class="carousel-content container b1-inner">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>
+<!-- banner end -->
+
+<!-- Featured properties start -->
+<div class="featured-properties content-area-2 bg-white">
+    <div class="container">
+        <div class="main-title">
+            <h1>Featured Properties</h1>
+            <p>Let’s find a home that’s perfect for you</p>
+        </div>
+        <div class="col-lg-12">
+            <div class="row property-box-6">
+                <div class="col-lg-6 col-pad">
+                    <div id="propertiesDetailsSlider" class="carousel properties-details-sliders slide">
+                        <!-- main slider carousel items -->
+                        <div class="carousel-inner">
+                            <div class="active item carousel-item" data-slide-number="0">
+                                <img src="{{ property.image_1.url }}" class="img-fluid" alt="property-4" style="width:555px;height:370px;">
+                            </div>
+                            <div class="item carousel-item" data-slide-number="1">
+                                <img src="{{ property.image_2.url }}" class="img-fluid" alt="property-6" style="width:555px;height:370px;">
+                            </div>
+                            <div class="item carousel-item" data-slide-number="2">
+                                <img src="{{ property.image_3.url }}" class="img-fluid" alt="property-1" style="width:555px;height:370px;">
+                            </div>
+                            <div class="item carousel-item" data-slide-number="4">
+                                <img src="{{ property.image_4.url }}" class="img-fluid" alt="property-5" style="width:555px;height:370px;">
+                            </div>
+                            <div class="item carousel-item" data-slide-number="5">
+                                <img src="{{ property.image_5.url }}" class="img-fluid" alt="property-8" style="width:555px;height:370px;">
+                            </div>
+                            <div class="item carousel-item" data-slide-number="2">
+                                <img src="{{ property.image_6.url }}" class="img-fluid" alt="property-9" style="width:555px;height:370px;">
+                            </div>
+                            <a class="carousel-control left" href="#propertiesDetailsSlider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+                            <a class="carousel-control right" href="#propertiesDetailsSlider" data-slide="next"><i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-pad align-self-center">
+                    <div class="info">
+                        <h3>
+                            <a href="{% url 'property-detail' property.id %}">Find Your Dream House</a>
+                        </h3>
+                        <p>Discover this stylish recent construction townhome fabulously located in a gated community of Montrose. Turn-key living at its finest! Enjoy all the amenities at Balconies of Bomar, an architecturally impressive and private enclave of 10 brilliantly built residences. The friendly neighbors gather to share fun times... such as spring crawfish boils, progressive wine dinners, and more!</p>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4">
+                                <ul>
+                                    <li><i class="flaticon-bed"></i> {{ property.bedrooms }} Bedrooms</li>
+                                    <li><i class="flaticon-bath"></i> {{ property.bathroom }} Bathrooms</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <ul>
+                                    <li><i class="flaticon-square-layouting-with-black-square-in-east-area"></i> Sq Ft:{{ property.sqft }}</li>
+                                    <li><i class="flaticon-car-repair"></i> {{  property.garage }} Garage</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <ul>
+                                    <li><i class="flaticon-balcony-and-door"></i>{{ property.balcony }} Balcony</li>
+                                    <li><i class="flaticon-monitor"></i>TV</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a href="{% url 'property-detail' property.id %}" class="btn btn-sm btn-color">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Featured properties end -->
+
+<!-- services start -->
+<div class="services content-area-20">
+    <div class="container">
+        <div class="main-title">
+            <h1>What Are you Looking For?</h1>
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-12 col-sm-12 wow fadeInLeft delay-04s">
+                <div class="media services-info">
+                    <i class="flaticon-user"></i>
+                    <div class="media-body">
+                        <h5>Personalized Service</h5>
+                        <p>We offer customized services for our customers to suit their needs.</p>
+                        <h4>01</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12 wow fadeInUp delay-04s">
+                <div class="media services-info">
+                    <i class="flaticon-hotel-building"></i>
+                    <div class="media-body">
+                        <h5>Luxury Real Estate Experts</h5>
+                        <p>We have agents who are ready and willing to give you tours, professional and indebt guide to help you achieve your goal.</p>
+                        <h4>02</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12 wow fadeInRight delay-04s">
+                <div class="media services-info">
+                    <i class="flaticon-money-bag-with-dollar-symbol"></i>
+                    <div class="media-body">
+                        <h5>Building For Rent $ Sell</h5>
+                        <p>We have properties and apartments for sale and for rent depending on your budget.</p>
+                        <h4>03</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-12 text-center">
+                <a data-animation="animated fadeInUp delay-10s" href="#" class="btn btn-lg btn-theme">More Details</a>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- services end -->
+
+<!-- Counters start -->
+<div class="counters">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 wow fadeInUp delay-04s">
+                <div class="counter-box">
+                    <i class="flaticon-tag"></i>
+                    <h1 class="counter">500</h1>
+                    <h5>Lines of Sale</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 wow fadeInDown delay-04s">
+                <div class="counter-box">
+                    <i class="flaticon-badge"></i>
+                    <h1 class="counter">254</h1>
+                    <h5>Listings For Rent</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 wow fadeInUp delay-04s">
+                <div class="counter-box">
+                    <i class="flaticon-call-center-agent"></i>
+                    <h1 class="counter">510</h1>
+                    <h5>Agents</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 wow fadeInDown delay-04s">
+                <div class="counter-box">
+                    <i class="flaticon-job"></i>
+                    <h1 class="counter">94</h1>
+                    <h5>Brokers</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Counters end -->
+
+<!-- Recent Properties start -->
+<div class="recent-properties content-area-2">
+    <div class="container">
+        <div class="main-title">
+            <h1>Recent Properties</h1>
+            <p>Latest affordable properties to provide yor comfort.</p>
+        </div>
+        <div class="row">
+            {% for property in properties %}
+            <div class="col-lg-3 col-md-6 col-sm-12 wow fadeInLeft delay-04s">
+                <div class="property-box-2">
+                    <div class="property-thumbnail">
+                        <a href="{% url 'property-detail' property.id %}" class="property-img">
+                            <div class="listing-badges">
+                                <span class="featured">Featured</span>
+                            </div>
+                            {% if property.status == "sa" %}
+                                <div class="tag-for">For Sale</div>
+                            {% else %}
+                                <div class="tag-for">For Rent</div>
+                            {% endif %}
+                            <img src="{{property.image_1.url}}" alt="property-2" class="img-fluid property-image">
+                            <div class="info">
+                                <ul class="facilities-list clearfix">
+                                    <li>
+                                        <i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
+                                        <p>SqFt:{{property.sqft}}</p>
+                                    </li>
+                                    <li>
+                                        <i class="flaticon-bed"></i>
+                                        <p>{{property.bedrooms}} Beds</p>
+                                    </li>
+                                    <li>
+                                        <i class="flaticon-bath"></i>
+                                        <p>{{property.bathroom}} Baths</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </a>
+                        <div class="property-overlay">
+                            <a href="{% url 'property-detail' property.id %}" class="overlay-link">
+                                <i class="fa fa-link"></i>
+                            </a>
+                            <!-- <a class="overlay-link property-video" title="Test Title">
+                                <i class="fa fa-video-camera"></i>
+                            </a> -->
+                            <div class="property-magnify-gallery">
+                                <a href="{{property.image_5.url}}" class="overlay-link">
+                                    <i class="fa fa-expand"></i>
+                                </a>
+                                <a href="{{ property.image_7.url }}" class="hidden"></a>
+                                <a href="{{ property.image_10.url }}" class="hidden"></a>
+                                <a href="{{ property.image_4.url }}" class="hidden"></a>
+                                <a href="{{ property.image_2.url }}" class="hidden"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <h5 class="title"><a href="{% url 'property-detail' property.id %}">{{ property.name }}</a></h5>
+                        <h4 class="price">
+                            ${{property.price}}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>
+<!-- Recent Properties end -->
+
+<!-- Most popular places start -->
+<div class="most-popular-places content-area-3">
+    <div class="container">
+        <div class="main-title">
+            <h1>Most Popular Places</h1>
+            <p>Discover properties in your favorite cities.</p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-pad wow fadeInLeft delay-04s">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-6 col-sm-12 cp-2">
+                            <div class="overview overview-box">
+                                <img src="{% static 'img/chicago.jpg' %}" alt="popular-places">
+                                <div class="mask align-self-center">
+                                    <div class="info">
+                                        <div class="ds">
+                                            <h2>Chicago</h2>
+                                            <div class="clearfix"></div>
+                                            <p>14 Properties</p>
+                                            <div class="clearfix"></div>
+                                            <a href="{% url 'property-detail' property.id %}" class="btn btn-border">Read more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-6 col-sm-12 cp-2">
+                            <div class="overview overview-box">
+                                <img src="{% static 'img/WA.jpg' %}" alt="popular-places">
+                                <div class="mask">
+                                    <div class="info">
+                                        <div class="ds">
+                                            <h2>Washington</h2>
+                                            <p>201 Properties</p>
+                                            <a href="{% url 'property-detail' property.id %}" class="btn btn-border">Read more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12 col-pad cp-3 wow fadeInUp delay-04s d-none-992">
+                    <div class="overview aa overview-box">
+                        <img src="{% static 'img/NY.jpg' %}" alt="popular-places" class="big-img">
+                        <div class="mask">
+                            <div class="info-2">
+                                <div class="ds">
+                                    <h2>New York</h2>
+                                    <p>72 Properties</p>
+                                    <a href="{% url 'property-detail' property.id %}" class="btn btn-border">Read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-pad wow fadeInRight delay-04s">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-6 col-sm-12 cp-2">
+                            <div class="overview overview-box">
+                                <img src="{% static 'img/Houston.jpg' %}" alt="popular-places">
+                                <div class="mask">
+                                    <div class="info">
+                                        <div class="ds">
+                                            <h2>Houston</h2>
+                                            <p>14 Properties</p>
+                                            <a href="{% url 'property-detail' property.id %}" class="btn btn-border">Read more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-6 col-sm-12 cp-2">
+                            <div class="overview overview-box">
+                                <img src="{% static 'img/LA.jpg' %}" alt="popular-places">
+                                <div class="mask">
+                                    <div class="info">
+                                        <div class="ds">
+                                            <h2>Los Angeles</h2>
+                                            <p>201 Properties</p>
+                                            <a href="{% url 'property-detail' property.id %}" class="btn btn-border">Read more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Most popular places end -->
+
+<!-- Agent start -->
+<div class="agent content-area">
+    <div class="container">
+        <div class="main-title">
+            <h1>Meet Our Agents</h1>
+            <p>Here to guide you in your want for comfort . . .</p>
+        </div>
+        <div class="slick-slider-area">
+            <div class="row slick-carousel wow fadeInUp delay-04s" data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+                <div class="slick-slide-item">
+                    <div class="agent-3">
+                        <div class="agent-photo">
+                            <img src="{% static 'img/agent_4.jpg' %}" alt="avatar-3" class="img-fluid">
+                            <div class="job">
+                                <h6>Web Developer</h6>
+                            </div>
+                        </div>
+                        <div class="agent-details">
+                            <h5><a href="agent-detail.html">Martin Smith</a></h5>
+                            <div class="contact">
+                                <p>
+                                    <a href="mailto:info@themevessel.com"><i class="fa fa-envelope-o"></i>info@themevessel.com</a>
+                                </p>
+                                <p>
+                                    <a href="tel:+554XX-634-7071"> <i class="fa fa-phone"></i>+55 4XX-634-7071</a>
+                                </p>
+                                <p>
+                                    <a href="#"><i class="fa fa-skype"></i>sales.carshop</a>
+                                </p>
+                            </div>
+                            <ul class="social-list clearfix">
+                                <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="instagram-bg"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="#" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="slick-slide-item">
+                    <div class="agent-3">
+                        <div class="agent-photo">
+                            <img src="{% static 'img/agent_1.jpg' %}" alt="agent-3" class="img-fluid">
+                            <div class="job">
+                                <h6>Office Manager</h6>
+                            </div>
+                        </div>
+                        <div class="agent-details">
+                            <h5><a href="agent-detail.html">Brandon Miller</a></h5>
+                            <div class="contact">
+                                <p>
+                                    <a href="mailto:info@themevessel.com"><i class="fa fa-envelope-o"></i>info@themevessel.com</a>
+                                </p>
+                                <p>
+                                    <a href="tel:+554XX-634-7071"> <i class="fa fa-phone"></i>+55 4XX-634-7071</a>
+                                </p>
+                                <p>
+                                    <a href="#"><i class="fa fa-skype"></i>sales.carshop</a>
+                                </p>
+                            </div>
+                            <ul class="social-list clearfix">
+                                <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="instagram-bg"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="#" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="slick-slide-item">
+                    <div class="agent-3">
+                        <div class="agent-photo">
+                            <img src="{% static 'img/agent_2.jpg' %}" alt="agent-3" class="img-fluid">
+                            <div class="job">
+                                <h6>Office Manager</h6>
+                            </div>
+                        </div>
+                        <div class="agent-details">
+                            <h5><a href="agent-detail.html">Brandon Miller</a></h5>
+                            <div class="contact">
+                                <p>
+                                    <a href="mailto:info@themevessel.com"><i class="fa fa-envelope-o"></i>info@themevessel.com</a>
+                                </p>
+                                <p>
+                                    <a href="tel:+554XX-634-7071"> <i class="fa fa-phone"></i>+55 4XX-634-7071</a>
+                                </p>
+                                <p>
+                                    <a href="#"><i class="fa fa-skype"></i>sales.carshop</a>
+                                </p>
+                            </div>
+                            <ul class="social-list clearfix">
+                                <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="instagram-bg"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="#" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="slick-slide-item">
+                    <div class="agent-3">
+                        <div class="agent-photo">
+                            <img src="{% static 'img/agent_3.jpg' %}" alt="agent-3" class="img-fluid">
+                            <div class="job">
+                                <h6>Creative Director</h6>
+                            </div>
+                        </div>
+                        <div class="agent-details">
+                            <h5><a href="agent-detail.html">John Pitarshon</a></h5>
+                            <div class="contact">
+                                <p>
+                                    <a href="mailto:info@themevessel.com"><i class="fa fa-envelope-o"></i>info@themevessel.com</a>
+                                </p>
+                                <p>
+                                    <a href="tel:+554XX-634-7071"> <i class="fa fa-phone"></i>+55 4XX-634-7071</a>
+                                </p>
+                                <p>
+                                    <a href="#"><i class="fa fa-skype"></i>sales.carshop</a>
+                                </p>
+                            </div>
+                            <ul class="social-list clearfix">
+                                <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="instagram-bg"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="#" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div >
+<!-- Agent end -->
+
+<!-- Testimonial 2 start -->
+<div class="testimonial-2">
+    <div class="container">
+        <div class="row">
+            <div class="offset-lg-2 col-lg-8">
+                <div class="testimonial-inner">
+                    <div class="main-title text-center">
+                        <h1>Our Testimonial</h1>
+                    </div>
+                    <div id="carouselExampleIndicators7" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner wow fadeInUp delay-04s">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <div class="avatar">
+                                            <img src="{% static 'img/t1.jpg' %}" alt="avatar-2" class="img-fluid rounded">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                                        <p class="lead">
+                                            My wife and I had a dream of downsizing from our house in Cape Elizabeth into a small condo closer to where we work and play in Portland. Blue Coral helped make that dream a reality. The sale went smoothly, and we just closed on an ideal new place we're excited to call home. Nobody  knows Portland and the peninsula better than Blue Coral.
+                                        </p>
+                                        <div class="author-name">
+                                            Emma Connor
+                                        </div>
+                                        <ul class="rating">
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star-half-full"></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <div class="avatar">
+                                            <img src="{% static 'img/t2.jpg' %}" alt="avatar" class="img-fluid rounded">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                                        <p class="lead">
+                                            Blue Coral was a joy to work with! The breath of his local knowledge of Alabama, ME and its environs along with a thorough real estate expertise was invaluable to us Portland novices. An agent of Blue Coral took time to introduce us to the market and then showed us lots of houses so we had great choices to work with. He also understood and worked with our time frame, responding quickly to all queries. We highly recommend Blue Coral!!
+                                        </p>
+                                        <div class="author-name">
+                                            Martin Smith
+                                        </div>
+                                        <ul class="rating">
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star-half-full"></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <div class="avatar">
+                                            <img src="{% static 'img/t3.jpg' %}" alt="avatar-3" class="img-fluid rounded">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                                        <p class="lead">
+                                            I would highly recommend Blue Coral. Blue Coral gave us many helpful suggestions on how to update our home. We followed many of their ideas and our home looked amazing. Blue Coral is very professional and did a very in depth market analysis to help us determine a selling price. Blue Coral marketed our house well and showed it often and we were able to get an offer on our home in just 10 days. Blue Coral were very responsive to any questions or concerns that we had and were always wonderful to deal with. If you are looking for an agent to sell your house, Blue Coral should be your first choice
+                                        </p>
+                                        <div class="author-name">
+                                            John Antony
+                                        </div>
+                                        <ul class="rating">
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star-half-full"></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators7" role="button" data-slide="prev">
+                            <span class="slider-mover-left" aria-hidden="true">
+                                <i class="fa fa-angle-left"></i>
+                            </span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators7" role="button" data-slide="next">
+                            <span class="slider-mover-right" aria-hidden="true">
+                                <i class="fa fa-angle-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial 2 end -->
+
+
+<!-- <div class="intro-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-12">
+                <div class="intro-text">
+                    <a href="{% url 'home' %}" class="logos"><img src="{% static 'img/logos/footer-logo.png' %}" alt="logo"></a>
+                    <a href="{% url 'home' %}" class="d-none-768"><img src="{% static 'img/logos/footer-logo.png' %}" alt="logo"></a>
+                    <span>Looking To Sell Or Rent Your Property?</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                <a href="{% url 'submit-property' %}" class="btn btn-md sn">Submit Now</a>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- intro section end -->
+
+
+
+<!-- Full Page Search -->
+<div id="full-page-search">
+    <button type="button" class="close">×</button>
+    <form action="{% url 'search' %}" class="search" method="GET">
+        <input
+            class="form-control search-box"
+            type="search"
+            placeholder="Type a keyword..."
+            name = "search_term"
+            value = "{{ search_term }}"
+            />
+        <button type="submit" class="btn btn-sm btn-color">Search</button>
+    </form>
+</div>
+
+
+
+<!-- Off-canvas sidebar -->
+<div class="off-canvas-sidebar">
+    <div class="off-canvas-sidebar-wrapper">
+        <div class="off-canvas-header">
+            <a class="close-offcanvas" href="#"><span class="fa fa-times"></span></a>
+        </div>
+        <div class="off-canvas-content">
+            <aside class="canvas-widget">
+                <div class="logo-sitebar text-center">
+                    <img src="{% static 'img/logos/footer-logo.png' %}" alt="logo">
+                </div>
+            </aside>
+            <aside class="canvas-widget">
+                <ul class="menu">
+                    <li class="menu-item menu-item-has-children"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="menu-item"><a href="{% url 'properties' %}">Properties</a></li>
+                    <li class="menu-item"><a href="{% url 'about' %}">About  US</a></li>
+                    <li class="menu-item"><a href="{% url 'contact' %}">Contact US</a></li>
+                </ul>
+            </aside>
+            <aside class="canvas-widget">
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <!-- <li><a href="#"><i class="fa fa-vk"></i></a></li> -->
+                </ul>
+            </aside>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}

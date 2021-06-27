@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    Admin Dashboard
+{% endblock title %}
+
+
+{% block body %}
+
+
+    <!-- main header start -->
+<header class="main-header sticky-header" id="main-header-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-lg navbar-light rounded">
+                    <a class="navbar-brand logo" href="{% url 'home' %}">
+                        <img src="{% static 'img/logos/black-logo.png' %}" alt="logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="navbar-nav justify-content-end ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'properties' %}"  aria-haspopup="true" aria-expanded="false">
+                                    Properties
+                                </a>
+                                
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'about' %}"  aria-haspopup="true" aria-expanded="false">
+                                    About
+                                </a>
+                                
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="{% url 'contact' %}"  aria-haspopup="true" aria-expanded="false">
+                                    Contact
+                                </a>
+                                
+                            </li>
+                        
+                            <li class="nav-item dropdown">
+                                <a href="#full-page-search" class="nav-link">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="open-offcanvas nav-link" href="#">
+                                    <span></span>
+                                    <span class="fa fa-bars"></span>
+                                </a>
+                            </li>
+                        
+                            <li class="nav-item sb2">
+                                <a  href="{% url 'submit-property' %}" class="submit-btn">
+                                    Add Property
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- main header end -->
+
+<!-- Sub banner start -->
+<div class="sub-banner">
+    <div class="container">
+        <div class="breadcrumb-area">
+            <h1>All Properties</h1>
+            <ul class="breadcrumbs">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="active">Admin Dashboard</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Sub banner end -->
+
+
+<!-- property table -->
+<div class="container my-3 py-3">
+<table class="table table-hover table-fixed">
+
+    <thead>
+      <tr>
+        <th>S/N</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Location</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+        {% for property in properties %}
+      <tr>
+        <th scope="row">{{property.id}}</th>
+        <td>{{property.name}}</td>
+        <td>{{property.price}}</td>
+        <td>{{property.city}}</td>
+        <td>
+            <ul>
+                <li style="float: left;">
+                    <a class="btn btn-sm btn-info mr-1" href="{% url 'property-detail' property.id %}">View</a>
+                    <a class="btn btn-sm btn-primary mr-1" href="{% url 'update' property.id %}">Edit</a>
+                    <a class="btn btn-sm btn btn-danger ml-1" href="{% url 'delete' property.id %}">Delete</a>
+                </li>
+            </ul>
+        </td>
+      </tr>
+        {% endfor %}
+      
+    </tbody>
+  
+  </table>
+<!-- property table end -->
+</div>
+
+<!-- Full Page Search -->
+<div id="full-page-search">
+    <button type="button" class="close">×</button>
+    <form action="{% url 'search' %}" class="search" method="GET">
+        <input
+            class="form-control search-box"
+            type="search"
+            placeholder="Type a keyword..."
+            name = "search_term"
+            value = "{{ search_term }}"
+            />
+        <button type="submit" class="btn btn-sm btn-color">Search</button>
+    </form>
+</div>
+
+
+<!-- Off-canvas sidebar -->
+<div class="off-canvas-sidebar">
+    <div class="off-canvas-sidebar-wrapper">
+        <div class="off-canvas-header">
+            <a class="close-offcanvas" href="#"><span class="fa fa-times"></span></a>
+        </div>
+        <div class="off-canvas-content">
+            <aside class="canvas-widget">
+                <div class="logo-sitebar text-center">
+                    <img src="{% static 'img/logos/footer-logo.png' %}" alt="logo">
+                </div>
+            </aside>
+            <aside class="canvas-widget">
+                <ul class="menu">
+                    <li class="menu-item menu-item-has-children"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="menu-item"><a href="{% url 'properties' %}">Properties</a></li>
+                    <li class="menu-item"><a href="{% url 'about' %}">About  US</a></li>
+                    <li class="menu-item"><a href="{% url 'contact' %}">Contact US</a></li>
+                </ul>
+            </aside>
+            <aside class="canvas-widget">
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="#"><i class="fa fa-vk"></i></a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

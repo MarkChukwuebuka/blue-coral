@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block title %}
+	Sign Up
+{% endblock title %}
+
+{% block header %}
+{% endblock header %}
+
+{% block body %}
+
+<!-- Contact section start -->
+
+<style>
+
+    #hint_id_username, #hint_id_password1, #hint_id_password2 {
+         display: none;
+     }
+    
+</style>
+
+
+<div class="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="login-inner-form">
+                    <div class="details">
+                        <a href="index.html">
+                            <img src="{% static 'img/logos/black-logo.png' %}" alt="logo">
+                        </a>
+                        <h3>Create an account</h3>
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            <!--csrf_token is used when the method is POST -->
+                            {% csrf_token %}
+                            {{ form | crispy }}
+                            <input type="submit" value="Register" class="w-100 text-white text-center my-2 btn btn-info">
+                        </form>
+                        
+                        <ul class="social-list clearfix">
+                            <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" class="google-bg"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="footer">
+                        <span>Already a member? <a href="{% url 'login' %}">Login here</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact section end -->
+
+<!-- Full Page Search -->
+<div id="full-page-search">
+    <button type="button" class="close">×</button>
+    <form action="#" class="search">
+        <input type="search" value="" placeholder="type keyword(s) here" />
+        <button type="button" class="btn btn-sm btn-color">Search</button>
+    </form>
+</div>
+
+
+{% endblock body %}
+
+{% block footer %}
+{% endblock footer %}

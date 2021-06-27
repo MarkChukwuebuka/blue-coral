@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+
+  Confirm Delete?
+
+{% endblock title %}
+
+
+{% block body %}
+
+    
+<div class="container py-4 my-3 div-confirm">
+    <p class="text-center del">Deleting "<span style="color: red;">{{property.name}}</span>" will be permanent. Are you sure you want to proceed???</p>
+    <a class="btn btn-sm btn-success myButton form-control my-3" href="{% url 'dashboard' %}">No</a>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <input class="btn btn-sm btn-danger form-control" type="submit" value="Yes, Delete" name="Yes">
+    </form>
+</div>
+
+{% endblock body %}
+

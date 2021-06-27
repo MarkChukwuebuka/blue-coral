@@ -1,0 +1,5 @@
+Django==3.2.1
+certifi==2020.12.5
+django-crispy-forms==1.8.1
+django-widget-tweaks==1.4.8
+Pillow==6.2.1

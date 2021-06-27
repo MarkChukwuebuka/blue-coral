@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+  Search Results for {{ search_term }}
+{% endblock title %}
+
+{% block body %}
+
+    <!-- main header start -->
+<header class="main-header sticky-header" id="main-header-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-lg navbar-light rounded">
+                    <a class="navbar-brand logo" href="{% url 'home' %}">
+                        <img src="{% static 'img/logos/black-logo.png' %}" alt="logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="navbar-nav justify-content-end ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'properties' %}"  aria-haspopup="true" aria-expanded="false">
+                                    Properties
+                                </a>
+                                
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'about' %}"  aria-haspopup="true" aria-expanded="false">
+                                    About
+                                </a>
+                                
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="{% url 'contact' %}"  aria-haspopup="true" aria-expanded="false">
+                                    Contact
+                                </a>
+                                
+                            </li>
+                            
+                            <li class="nav-item dropdown">
+                                <a href="#f" class="nav-link">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="open-offcanvas nav-link" href="#">
+                                    <span></span>
+                                    <span class="fa fa-bars"></span>
+                                </a>
+                            </li>
+                        
+                            <!-- <li class="nav-item sb2">
+                                <a  href="{% url 'submit-property' %}" class="submit-btn">
+                                    Submit Property
+                                </a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- main header end -->
+
+<!-- Sub banner start -->
+<div class="sub-banner">
+    <div class="container">
+        <div class="breadcrumb-area">
+            <!-- <h1>Contact Us</h1> -->
+            <ul class="breadcrumbs">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="active">Search Results</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Sub banner end -->
+
+
+
+
+
+
+
+
+  <!-- Main Section -->
+    <div class="container mt-3">
+      <h3 class="heading font-weight-light text-center">Search results for "{{ search_term }}"</h3>
+      <hr />
+    </div>
+
+    <div class="container main-part">
+      <!-- Card for details -->
+      <div class="row">
+      {% if properties %}
+        
+
+        {% for property in properties %}
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="property-box">
+                    <div class="property-thumbnail">
+                        <a href="{% url 'property-detail' property.id %}" class="property-img">
+                            <div class="listing-badges">
+                                <span class="featured">Featured</span>
+                            </div>
+                            <div class="tag-for">For Sale</div>
+                            <div class="plan-price"><sup>$</sup>820<span>/month</span> </div>
+                            <img src="{{property.image_1.url}}" alt="property-box" class="img-fluid"
+                            style="width: 350px; height: 233px;">
+                        </a>
+                        <div class="property-overlay">
+                            <a href="{% url 'property-detail' property.id %}" class="overlay-link">
+                                <i class="fa fa-link"></i>
+                            </a>
+                            <!-- <a class="overlay-link property-video" title="Test Title">
+                                <i class="fa fa-video-camera"></i>
+                            </a> -->
+                            <div class="property-magnify-gallery">
+                                <a href="{{property.image_2}}" class="overlay-link">
+                                    <i class="fa fa-expand"></i>
+                                </a>
+                                <a href="{{property.image_3}}" class="hidden"></a>
+                                <a href="{{property.image_4}}" class="hidden"></a>
+                                <a href="{{property.image_5}}" class="hidden"></a>
+                                <a href="{{property.image_6}}" class="hidden"></a>
+                                <a href="{{property.image_7}}" class="hidden"></a>
+                                <a href="{{property.image_8}}" class="hidden"></a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <h1 class="title">
+                            <a href="{% url 'property-detail' property.id %}">{{property.name}}</a>
+                        </h1>
+                        <div class="location">
+                            <a href="{% url 'property-detail' property.id %}">
+                                <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>{{property.address}},
+                            </a>
+                        </div>
+                        <ul class="facilities-list clearfix">
+                            <li>
+                                <i class="flaticon-bed"></i> {{property.bedrooms}} Bedrooms
+                            </li>
+                            <li>
+                                <i class="flaticon-bath"></i> {{property.bathroom}} Bathrooms
+                            </li>
+                            <li>
+                                <i class="flaticon-square-layouting-with-black-square-in-east-area"></i> Sq Ft:{{property.sqft}}
+                            </li>
+                            <li>
+                                <i class="flaticon-car-repair"></i> {{property.garage}} Garage
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer">
+                        <a href="#">
+                            <i class="fa fa-user"></i> Jhon Doe
+                        </a>
+                        <span>
+                            <i class="fa fa-calendar-o"></i> 2 day ago
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+        {% endfor %}
+      {% else %}
+        <p class="d-block font-weight-light my-2 heading">There are no properties associated with {{ search_term }}</p>
+      {% endif %}
+      </div>
+    </div>
+    <!-- Main Section ends-->
+
+{% endblock body %}

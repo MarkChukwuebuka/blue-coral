@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{%block title %}
+    Blue Coral | Buy Property
+{% endblock title %}
+
+{% block body %}
+
+
+
+
+
+<!-- main header start -->
+<header class="main-header sticky-header" id="main-header-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-lg navbar-light rounded">
+                    <a class="navbar-brand logo" href="{% url 'home' %}">
+                        <img src="{% static 'img/logos/black-logo.png' %}" alt="logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="navbar-nav justify-content-end ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'properties' %}"  aria-haspopup="true" aria-expanded="false">
+                                    Properties
+                                </a>
+                                
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'about' %}"  aria-haspopup="true" aria-expanded="false">
+                                    About
+                                </a>
+                                
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="{% url 'contact' %}"  aria-haspopup="true" aria-expanded="false">
+                                    Contact
+                                </a>
+                                
+                            </li>
+                            
+                            <li class="nav-item dropdown">
+                                <a href="#full-page-search" class="nav-link">
+                                    <i class="fa fa-search"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="open-offcanvas nav-link" href="#">
+                                    <span></span>
+                                    <span class="fa fa-bars"></span>
+                                </a>
+                            </li>
+                        
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- main header end -->
+
+<!-- Sub banner start -->
+<div class="sub-banner">
+    <div class="container">
+        <div class="breadcrumb-area">
+            <h1>Buy Property</h1>
+            <ul class="breadcrumbs">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="active">Buy</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Sub banner end -->
+
+<!-- Pay -->
+<div class="container">
+    <img src="{% static 'img/code.jpeg' %}" alt="qrcode" style="padding-left: 35%; padding-top: 4%;">
+    <div class="text-center mb-3">
+        <p>Click on address to copy</p>
+        <h4 class="mail-text black-font semi-bold" tooltip="Click to Copy" tooltip-position="bottom">19J57KyCpV7VtbVEgJcuRNbQEDdw6p9GCm</h4>
+    </div>
+
+</div>  
+
+
+
+
+
+
+
+<!-- Full Page Search -->
+<div id="full-page-search">
+    <button type="button" class="close">×</button>
+    <form action="{% url 'search' %}" class="search" method="GET">
+        <input
+            class="form-control search-box"
+            type="search"
+            placeholder="Type a keyword..."
+            name = "search_term"
+            value = "{{ search_term }}"
+            />
+        <button type="submit" class="btn btn-sm btn-color">Search</button>
+    </form>
+</div>
+
+<!-- Off-canvas sidebar -->
+<div class="off-canvas-sidebar">
+    <div class="off-canvas-sidebar-wrapper">
+        <div class="off-canvas-header">
+            <a class="close-offcanvas" href="#"><span class="fa fa-times"></span></a>
+        </div>
+        <div class="off-canvas-content">
+            <aside class="canvas-widget">
+                <div class="logo-sitebar text-center">
+                    <img src="{% static 'img/logos/footer-logo.png' %}" alt="logo">
+                </div>
+            </aside>
+            <aside class="canvas-widget">
+                <ul class="menu">
+                    <li class="menu-item menu-item-has-children"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="menu-item"><a href="{% url 'properties' %}">Properties</a></li>
+
+                    <li class="menu-item"><a href="{% url 'about' %}">About  US</a></li>
+                    <li class="menu-item"><a href="{% url 'contact' %}">Contact US</a></li>
+                </ul>
+            </aside>
+            <aside class="canvas-widget">
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <!-- <li><a href="#"><i class="fa fa-vk"></i></a></li> -->
+                </ul>
+            </aside>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const copyMailId = document.querySelectorAll('.mail-text');
+
+
+
+    copyMailId.forEach(copyText => {
+        copyText.addEventListener('click', () => {
+            const selection = window.getSelection();
+            const range = document.createRange();
+            range.selectNodeContents(copyText);
+            selection.removeAllRanges();
+            selection.addRange(range);
+
+            try {
+                document.execCommand('copy');
+                selection.removeAllRanges();
+
+                const mailId = copyText.textContent;
+                copyText.textContent = 'Copied!';
+                copyText.classList.add('success');
+
+                setTimeout(() => {
+                    copyText.textContent = mailId;
+                    copyText.classList.remove('success');
+                }, 1000);
+            } catch (e) {
+                copyText.textContent = 'Couldn\'t copy, hit Ctrl+C!';
+                copyText.classList.add('error');
+
+                setTimeout(() => {
+                    errorMsg.classList.remove('show');
+                }, 1200);
+            }
+        });
+    });
+</script>
+
+{% endblock body %}
+
+
