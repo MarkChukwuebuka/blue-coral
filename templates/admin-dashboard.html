@@ -49,12 +49,34 @@
                                     <i class="fa fa-search"></i>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="open-offcanvas nav-link" href="#">
-                                    <span></span>
-                                    <span class="fa fa-bars"></span>
-                                </a>
-                            </li>
+                            {% if request.user.is_authenticated %}
+
+                                    {% if user.is_superuser %}
+                                        <li class="nav-item">
+                                            <a href="{% url 'admin_dashboard' %}" class="nav-link">Dashboard </a>
+                                        </li>
+                                    {% else %}
+
+                                        <li class="nav-item">
+                                            <a href="{% url 'user_dashboard' %}" class="nav-link">Dashboard </a>
+                                        </li>
+
+                                    {% endif %}
+
+
+                                    <li class="nav-item">
+                                        <a href="{% url 'logout' %}" class="nav-link">Logout </a>
+                                    </li>
+
+                                {% else %}
+
+                                <li class="nav-item">
+                                    <a href="{% url 'login' %}" class="nav-link">Login </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'register' %}" class="nav-link">Register</a>
+                                </li>
+                                {% endif %}
                         
                             <li class="nav-item sb2">
                                 <a  href="{% url 'submit-property' %}" class="submit-btn">
@@ -74,7 +96,7 @@
 <div class="sub-banner">
     <div class="container">
         <div class="breadcrumb-area">
-            <h1>All Properties</h1>
+            <h1>Welcome Admin</h1>
             <ul class="breadcrumbs">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li class="active">Admin Dashboard</li>
@@ -87,40 +109,24 @@
 
 <!-- property table -->
 <div class="container my-3 py-3">
-<table class="table table-hover table-fixed">
-
-    <thead>
-      <tr>
-        <th>S/N</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Location</th>
-        <th>Action</th>
-      </tr>
-    </thead>
+    <div class="col-md-6 col-xl-6">
+        <div class="card bg-c-green order-card">
+          <div class="card-block">
+            <h6 class="m-b-20"> <a href="{% url 'admin_properties' %}" style="text-decoration: none;color:white;">Properties</a> </h6>
+            
+          </div>
+        </div>
+      </div>
   
-    <tbody>
-        {% for property in properties %}
-      <tr>
-        <th scope="row">{{property.id}}</th>
-        <td>{{property.name}}</td>
-        <td>{{property.price}}</td>
-        <td>{{property.city}}</td>
-        <td>
-            <ul>
-                <li style="float: left;">
-                    <a class="btn btn-sm btn-info mr-1" href="{% url 'property-detail' property.id %}">View</a>
-                    <a class="btn btn-sm btn-primary mr-1" href="{% url 'update' property.id %}">Edit</a>
-                    <a class="btn btn-sm btn btn-danger ml-1" href="{% url 'delete' property.id %}">Delete</a>
-                </li>
-            </ul>
-        </td>
-      </tr>
-        {% endfor %}
-      
-    </tbody>
-  
-  </table>
+      <div class="col-md-6 col-xl-6">
+        <div class="card bg-c-green order-card">
+          <div class="card-block">
+            <h6 class="m-b-20"><a href="{% url 'admin_transactions' %}" style="text-decoration: none;color:white;">Transactions</a> </h6>
+            
+            
+          </div>
+        </div>
+      </div>
 <!-- property table end -->
 </div>
 

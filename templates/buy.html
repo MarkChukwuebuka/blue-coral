@@ -50,12 +50,34 @@
                                     <i class="fa fa-search"></i>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="open-offcanvas nav-link" href="#">
-                                    <span></span>
-                                    <span class="fa fa-bars"></span>
-                                </a>
-                            </li>
+                            {% if request.user.is_authenticated %}
+
+                                    {% if user.is_superuser %}
+                                        <li class="nav-item">
+                                            <a href="{% url 'admin_dashboard' %}" class="nav-link">Dashboard </a>
+                                        </li>
+                                    {% else %}
+
+                                        <li class="nav-item">
+                                            <a href="{% url 'user_dashboard' %}" class="nav-link">Dashboard </a>
+                                        </li>
+
+                                    {% endif %}
+
+
+                                    <li class="nav-item">
+                                        <a href="{% url 'logout' %}" class="nav-link">Logout </a>
+                                    </li>
+
+                                {% else %}
+
+                                <li class="nav-item">
+                                    <a href="{% url 'login' %}" class="nav-link">Login </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'register' %}" class="nav-link">Register</a>
+                                </li>
+                                {% endif %}
                         
                             
                         </ul>
@@ -88,6 +110,8 @@
         <p>Click on address to copy</p>
         <h4 class="mail-text black-font semi-bold" tooltip="Click to Copy" tooltip-position="bottom">19J57KyCpV7VtbVEgJcuRNbQEDdw6p9GCm</h4>
     </div>
+
+    <a class="btn btn-sm btn-primary mr-1 btn-lg my-4" href="{% url 'confirm' property.id %}" style="margin-left: 40%;">Confirm Payment</a>
 
 </div>  
 

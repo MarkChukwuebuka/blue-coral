@@ -108,24 +108,90 @@ def property(request, pk):
     return render(request, 'properties-details.html', context)
 
 @login_required
-def dashboard(request):
+def admin_dashboard(request):
 
     context={
         'properties' : Property.objects.all().order_by('-id'),
         'footer_properties' : Property.objects.all().order_by('-id')[:3]
     }
 
-    return render(request,'dashboard.html', context)
+    return render(request,'admin-dashboard.html', context)
+
+@login_required
+def admin_properties(request):
+
+    context={
+        'properties' : Property.objects.all().order_by('-id'),
+        'footer_properties' : Property.objects.all().order_by('-id')[:3]
+    }
+
+    return render(request,'admin-dashboard-properties.html', context)
 
 
 
 @login_required
-def pay(request):
+def admin_transactions(request):
+
+    context={
+        'transactions': Transaction.objects.all().order_by('-id'),
+        'properties' : Property.objects.all().order_by('-id'),
+        'footer_properties' : Property.objects.all().order_by('-id')[:3]
+    }
+
+    return render(request,'admin-dashboard-transactions.html', context)
+
+
+
+
+@login_required
+def user_dashboard(request):
+
+    context={
+        'current_user': request.user,
+        'transactions':Transaction.objects.filter(user=request.user).order_by('-id'),
+        'properties' : Property.objects.all().order_by('-id'),
+        'footer_properties' : Property.objects.all().order_by('-id')[:3]
+    }
+
+    return render(request,'user-dashboard.html', context)
+
+@login_required
+def confirm(request, pk):
+    current_user = request.user
+    property = Property.objects.get(id=pk)
+    transaction = Transaction()
+    transaction.property = property
+    transaction.user = current_user
+    transaction.save()
+    return redirect('user_dashboard')
+
+
+
+
+@login_required
+def pay(request, pk):
+    property = Property.objects.get(id=pk)
     context = {
+        'property' : property,
         'footer_properties' : Property.objects.all().order_by('-id')[:3]
     }
 
     return render(request, 'buy.html', context)
+
+
+def approve_transaction_view(request,pk):
+    transaction = Transaction.objects.get(id=pk)
+    transaction.status='Approved'
+    transaction.save()
+    return redirect('admin_transactions')
+
+
+
+def disapprove_transaction_view(request,pk):
+    transaction = Transaction.objects.get(id=pk)
+    transaction.status='Disapproved'
+    transaction.save()
+    return redirect('admin_transactions')
 
 
         

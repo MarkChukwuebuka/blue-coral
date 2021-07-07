@@ -23,9 +23,14 @@
                     <a class="navbar-brand logo navbar-brand d-flex w-50 mr-auto" href="{% url 'home' %}">
                         <img src="{% static 'img/logos/black-logo.png' %}" alt="logo">
                     </a>
+                    
+                    <!-- <a class="btn btn-sm btn-primary" href="{% url 'login' %}">Login</a> -->
+
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="fa fa-bars"></span>
+                        
                     </button>
+
                     <div class="navbar-collapse collapse w-100" id="navbar">
                         <ul class="navbar-nav ml-auto">
                             
@@ -35,30 +40,54 @@
                                 </a>
                                 
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item">
                                 <a class="nav-link" href="{% url 'about' %}" aria-haspopup="true" aria-expanded="false">
                                     About
                                 </a>
                                 
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item">
                                 <a class="nav-link" href="{% url 'contact' %}"  aria-haspopup="true" aria-expanded="false">
                                     Contact
                                 </a>
                                 
                             </li>
                             
-                            <li class="nav-item dropdown">
+                            <li class="nav-item">
                                 <a href="#full-page-search" class="nav-link">
                                     <i class="fa fa-search"></i>
                                 </a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="open-offcanvas nav-link" href="#">
-                                    <span></span>
-                                    <span class="fa fa-bars"></span>
-                                </a>
-                            </li>
+                            
+                                {% if request.user.is_authenticated %}
+
+                                    {% if user.is_superuser %}
+                                        <li class="nav-item">
+                                            <a href="{% url 'admin_dashboard' %}" class="nav-link">Dashboard </a>
+                                        </li>
+                                    {% else %}
+
+                                        <li class="nav-item">
+                                            <a href="{% url 'user_dashboard' %}" class="nav-link">Dashboard </a>
+                                        </li>
+
+                                    {% endif %}
+
+
+                                    <li class="nav-item">
+                                        <a href="{% url 'logout' %}" class="nav-link">Logout </a>
+                                    </li>
+
+                                {% else %}
+
+                                <li class="nav-item">
+                                    <a href="{% url 'login' %}" class="nav-link">Login </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'register' %}" class="nav-link">Register</a>
+                                </li>
+                                {% endif %}
+                            
                         </ul>
                     </div>
                 </nav>
@@ -451,7 +480,7 @@
                             <h5><a href="agent-detail.html">Martin Smith</a></h5>
                             <div class="contact">
                                 <p>
-                                    <a href="mailto:info@themevessel.com"><i class="fa fa-envelope-o"></i>info@themevessel.com</a>
+                                    <a href="mailto:info@bluecorralestates.com"><i class="fa fa-envelope-o"></i>info@bluecorralestates.com</a>
                                 </p>
                                 <p>
                                     <a href="tel:+554XX-634-7071"> <i class="fa fa-phone"></i>+55 4XX-634-7071</a>
@@ -481,7 +510,7 @@
                             <h5><a href="agent-detail.html">Brandon Miller</a></h5>
                             <div class="contact">
                                 <p>
-                                    <a href="mailto:info@themevessel.com"><i class="fa fa-envelope-o"></i>info@themevessel.com</a>
+                                    <a href="mailto:info@bluecorralestates.com"><i class="fa fa-envelope-o"></i>info@bluecorralestates.com</a>
                                 </p>
                                 <p>
                                     <a href="tel:+554XX-634-7071"> <i class="fa fa-phone"></i>+55 4XX-634-7071</a>
@@ -511,7 +540,7 @@
                             <h5><a href="agent-detail.html">Brandon Miller</a></h5>
                             <div class="contact">
                                 <p>
-                                    <a href="mailto:info@themevessel.com"><i class="fa fa-envelope-o"></i>info@themevessel.com</a>
+                                    <a href="mailto:info@bluecorralestates.com"><i class="fa fa-envelope-o"></i>info@bluecorralestates.com</a>
                                 </p>
                                 <p>
                                     <a href="tel:+554XX-634-7071"> <i class="fa fa-phone"></i>+55 4XX-634-7071</a>
@@ -541,7 +570,7 @@
                             <h5><a href="agent-detail.html">John Pitarshon</a></h5>
                             <div class="contact">
                                 <p>
-                                    <a href="mailto:info@themevessel.com"><i class="fa fa-envelope-o"></i>info@themevessel.com</a>
+                                    <a href="mailto:info@bluecorralestates.com"><i class="fa fa-envelope-o"></i>info@bluecorralestates.com</a>
                                 </p>
                                 <p>
                                     <a href="tel:+554XX-634-7071"> <i class="fa fa-phone"></i>+55 4XX-634-7071</a>
