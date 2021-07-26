@@ -68,6 +68,12 @@ Version:    1.1.0
     *. Footer Item / .footer-item
 -------------------------------------------------------------------*/
 /** GLOBAL CLASSES **/
+
+
+
+
+
+
 body {
     font-family: 'Open Sans', sans-serif;
     background: #fbfbfb;
@@ -87,6 +93,12 @@ body {
     max-width: 100% !important;
     height: auto;
 }
+
+.area {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
 
 .page_loader {
     position: fixed;
@@ -2766,6 +2778,12 @@ and (max-device-width : 1024px) {
       height: 327px;
       width: 500px;
     }
+
+    img.img-fluid{
+        width: 500px;
+        height: 233px;
+    }
+
 }
 
 
@@ -2774,6 +2792,10 @@ and (min-width : 1224px) {
     img.property-image {
         width: 255px; 
         height: 327px;
+    }
+    img.img-fluid{
+        width: 350px; 
+        height: 233px;
     }
 
 }

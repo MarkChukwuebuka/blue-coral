@@ -13,6 +13,8 @@ from rest_framework.response import Response
 from rest_framework import generics, mixins
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 
 
@@ -21,7 +23,7 @@ def home(request):
 
     context = {
     
-        'properties' : Property.objects.all().order_by('-id'),
+        'properties' : Property.objects.all().order_by('-id')[:2],
         'property' : Property.objects.all().last(),
         'footer_properties' : Property.objects.all().order_by('-id')[:3],
         'chicago' : Property.objects.filter(city='Chicago'),
@@ -55,9 +57,15 @@ def search(request):
 
 def properties(request):
 
+    properties = Property.objects.all().order_by('-id')
+    paginator = Paginator(properties, 2)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     context = {
     
-        'properties' : Property.objects.all().order_by('-id'),
+        'page_obj' : page_obj,
         'footer_properties' : Property.objects.all().order_by('-id')[:3]
     }
 
