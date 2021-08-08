@@ -7620,7 +7620,7 @@ table {
     border: none;
 }
 
-.overview-box:hover > img {
+.overview-box > img {
     -webkit-transform: scale(2) rotate(10deg);
     transform: scale(2) rotate(10deg);
     -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=30)";
@@ -7635,14 +7635,14 @@ table {
     position: relative;
     font-size: 16px;
     padding: 0 10px;
-    background: rgba(0, 0, 0, 0.8);
+    /*background: rgba(0, 0, 0, 0.8);*/
     text-shadow: none;
 }
 
 .overview-box h2 {
     color: #333;
     margin: 0 20px 0;
-    background: transparent;
+    /*background: transparent;*/
     -webkit-transform: scale(0);
     transform: scale(0);
     -webkit-transition: all 0.5s linear;
@@ -7668,9 +7668,9 @@ table {
     padding: 4px 20px;
 }
 
-.overview-box:hover h2,
-.overview-box:hover p,
-.overview-box:hover a.btn {
+.overview-box h2,
+.overview-box p,
+.overview-box a.btn {
     -webkit-transform: scale(1);
     transform: scale(1);
     -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
@@ -7874,7 +7874,7 @@ table {
     z-index: 999;
 }
 
-.overview .mask:hover{
+.overview .mask{
     background-color: rgba(0, 0, 0, 0.6);
 }
 
@@ -7944,7 +7944,7 @@ table {
     border: none;
 }
 
-.overview-box:hover > img {
+.overview-box > img {
     -webkit-transform: scale(2) rotate(10deg);
     transform: scale(2) rotate(10deg);
     -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=30)";
@@ -7959,7 +7959,7 @@ table {
     font-weight: 400;
     font-size: 18px;
     padding: 0 10px 5px;
-    background: rgba(0, 0, 0, 0.8);
+    /*background: rgba(0, 0, 0, 0.8);*/
     font-family: 'Roboto', sans-serif;
     margin: 20px 0 0 0;
     text-shadow: none;
@@ -7968,7 +7968,7 @@ table {
 .overview-box h2 {
     color: #fff;
     margin: 0 20px 0;
-    background: transparent;
+    /*background: transparent;*/
     -webkit-transform: scale(0);
     transform: scale(0);
     -webkit-transition: all 0.5s linear;
@@ -7993,9 +7993,9 @@ table {
     padding: 4px 20px;
 }
 
-.overview-box:hover h2,
-.overview-box:hover p,
-.overview-box:hover a.btn {
+.overview-box h2,
+.overview-box p,
+.overview-box a.btn {
     -webkit-transform: scale(1);
     transform: scale(1);
     -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";

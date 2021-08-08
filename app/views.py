@@ -14,6 +14,7 @@ from rest_framework import generics, mixins
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import ListView
 
 
 
@@ -53,23 +54,28 @@ def search(request):
 	else:
 		return redirect('home')
 
+class Properties(ListView):
+    model = Property
+    template_name = 'properties.html'
+    context_object_name = 'properties'
+    paginate_by = 2
 
 
-def properties(request):
+# def properties(request):
 
-    properties = Property.objects.all().order_by('-id')
-    paginator = Paginator(properties, 2)
+#     properties = Property.objects.all().order_by('-id')
+#     paginator = Paginator(properties, 2)
 
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+#     page_number = request.GET.get('page')
+#     page_obj = paginator.get_page(page_number)
 
-    context = {
+#     context = {
     
-        'page_obj' : page_obj,
-        'footer_properties' : Property.objects.all().order_by('-id')[:3]
-    }
+#         'page_obj' : page_obj,
+#         'footer_properties' : Property.objects.all().order_by('-id')[:3]
+#     }
 
-    return render(request, 'properties.html', context)
+#     return render(request, 'properties.html', context)
 
 
 

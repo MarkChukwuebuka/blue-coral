@@ -359,9 +359,10 @@
                 </div>
             </div>
             {% endfor %}
-            <a href="{% url 'properties' %}" class="btn btn-sm btn-color" style="margin-left:35%;">See more</a>
+            
             
         </div>
+        <a href="{% url 'properties' %}" class="btn btn-sm btn-color" style="margin-left:35%;">See more</a>
     </div>
 </div>
 <!-- Recent Properties end -->
@@ -378,12 +379,13 @@
                 <div class="col-lg-4 col-md-12 col-pad wow fadeInLeft delay-04s">
                     <div class="row">
                         <div class="col-lg-12 col-md-6 col-sm-12 cp-2">
-                            <div class="overview overview-box">
+                            <div class="overview">
                                 <img src="{% static 'img/chicago.jpg' %}" alt="popular-places">
                                 <div class="mask align-self-center">
                                     <div class="info">
                                         <div class="ds">
-                                            <h2>Chicago</h2>
+                                            <div class="clearfix"></div>
+                                            <h3 style="color:#fff;">Chicago</h3>
                                             <div class="clearfix"></div>
                                             <p>14 Properties</p>
                                             <div class="clearfix"></div>
@@ -394,12 +396,12 @@
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-6 col-sm-12 cp-2">
-                            <div class="overview overview-box">
+                            <div class="overview">
                                 <img src="{% static 'img/WA.jpg' %}" alt="popular-places">
                                 <div class="mask">
                                     <div class="info">
                                         <div class="ds">
-                                            <h2>Washington</h2>
+                                            <h3 style="color:#fff;">Washington</h3>
                                             <p>201 Properties</p>
                                             <a href="{% url 'property-detail' property.id %}" class="btn btn-border">Read more</a>
                                         </div>
@@ -410,12 +412,12 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12 col-pad cp-3 wow fadeInUp delay-04s d-none-992">
-                    <div class="overview aa overview-box">
+                    <div class="overview aa">
                         <img src="{% static 'img/NY.jpg' %}" alt="popular-places" class="big-img">
                         <div class="mask">
                             <div class="info-2">
                                 <div class="ds">
-                                    <h2>New York</h2>
+                                    <h3 style="color:#fff;">New York</h3>
                                     <p>72 Properties</p>
                                     <a href="{% url 'property-detail' property.id %}" class="btn btn-border">Read more</a>
                                 </div>
@@ -426,12 +428,12 @@
                 <div class="col-lg-4 col-md-12 col-pad wow fadeInRight delay-04s">
                     <div class="row">
                         <div class="col-lg-12 col-md-6 col-sm-12 cp-2">
-                            <div class="overview overview-box">
+                            <div class="overview">
                                 <img src="{% static 'img/Houston.jpg' %}" alt="popular-places">
                                 <div class="mask">
                                     <div class="info">
                                         <div class="ds">
-                                            <h2>Houston</h2>
+                                            <h3 style="color:#fff;">Houston</h3>
                                             <p>14 Properties</p>
                                             <a href="{% url 'property-detail' property.id %}" class="btn btn-border">Read more</a>
                                         </div>
@@ -440,12 +442,12 @@
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-6 col-sm-12 cp-2">
-                            <div class="overview overview-box">
+                            <div class="overview">
                                 <img src="{% static 'img/LA.jpg' %}" alt="popular-places">
                                 <div class="mask">
                                     <div class="info">
                                         <div class="ds">
-                                            <h2>Los Angeles</h2>
+                                            <h3 style="color:#fff;">Los Angeles</h3>
                                             <p>201 Properties</p>
                                             <a href="{% url 'property-detail' property.id %}" class="btn btn-border">Read more</a>
                                         </div>
